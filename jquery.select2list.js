@@ -14,7 +14,7 @@
     * - childClassName: HTML class applied to the children elements. Defualt: 'select2list-option'
     * - optionValueDataKey: HTML5 data key name to store the option's value
     *
-    * - change(SelectListObject, new_value): callback, is fired when a new option is selected. Default: $.noop
+    * - change(SelectListObject, new_value, display): callback, is fired when a new option is selected. Default: $.noop
     *
     * @param {element} el The HTML element to apply SelectList to
     * @param {object} options Optional object of configuration options
@@ -90,7 +90,7 @@
                 // if we've got a custom event handler for the change event,
                 // fire it now
                 if( $.isFunction( config.change ) ) {
-                    config.change.apply(self, [self,value]);
+                    config.change.apply(self, [self,value,selectable_options[value]]);
                 }
             }
         },
@@ -129,18 +129,20 @@
 
             $.each(selectable_options, function(value, display) {
                 var is_selected = (current_option_value === value),
-                    option_html;
+                    option_html,
+                    option_class = config.childClassName;
 
                 // if we're on the current selected option, we don't wrap
                 // the item in an <a> tag, so it won't look active
                 if( is_selected ) {
-                    option_html = display;
+                    option_html = '<span>' + display + '</span>';
+                    option_class += ' selected';
                 } else {
                     option_html = '<a href="#' + value + '">' + display + '</a>';
                 }
 
-                $('<' + config.childTagName + '/>', {
-                    'class': config.childClassName
+                new_option = $('<' + config.childTagName + '/>', {
+                    'class': option_class
                 })
                 .data('select2list-value', value)
                 .data(config.optionValueDataKey, value)
