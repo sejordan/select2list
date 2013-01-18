@@ -1,6 +1,6 @@
 {
   "name": "select2list",
-  "title": "select2list",
+  "title": "jQuery-select2list",
   "description": "jQuery plugin for creating a list of selectable items out of an HTML select element.",
   "keywords": [
     "select",
@@ -9,13 +9,13 @@
   "version": "0.1.0",
   "author": {
     "name": "Sean Jordan",
-    "url": "http://sean.edisonjordan.com/code/select2list"
+    "url": "http://sean.edisonjordan.com"
   },
   "maintainers": [
     {
       "name": "Sean Jordan",
       "email": "sjordan8@gmail.com",
-      "url": "sean.edisonjordan.com"
+      "url": "http://sean.edisonjordan.com"
     }
   ],
   "licenses": [
