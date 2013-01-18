@@ -1,5 +1,5 @@
 /**
-* jQuery select2list plugin v0.1
+* jQuery select2list plugin v0.1.0
 * Works with jQuery >= v1.7.1
 *
 * Turn a select element into a list of radio-button-style links
