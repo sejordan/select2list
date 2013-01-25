@@ -90,7 +90,7 @@
                 // if we've got a custom event handler for the change event,
                 // fire it now
                 if( $.isFunction( config.change ) ) {
-                    config.change.apply(self, [self,value,selectable_options[value]]);
+                    config.change.apply(self, [self,value,selectable_options[value]['label']]);
                 }
             }
         },
@@ -108,11 +108,27 @@
 
                 // if a data-display value is set, use that, otherwise take
                 // the element's html text
-                parsed_options[ $(this).attr('value') ] =
-                    display_value ? display_value : $(this).text();
+                parsed_options[ $(this).attr('value') ] = {
+                    label: (display_value ? display_value : $(this).text()),
+                    value: $(this).attr('value'),
+                    disabled: !!($(this).attr('disabled')),
+                    option_element: this
+                };
             });
 
             selectable_options = parsed_options;
+        },
+
+       /**
+        * returns a list of all possible values in the list
+        */
+        get_all_values = function() {
+            var list = [];
+            $.each(selectable_options, function(v,k) {
+                list.push(v);
+            });
+
+            return list;
         },
 
        /**
@@ -127,7 +143,7 @@
             // clean out any old children from a previous render
             generated_element.html('');
 
-            $.each(selectable_options, function(value, display) {
+            $.each(selectable_options, function(value, option) {
                 var is_selected = (current_option_value === value),
                     option_html,
                     option_class = config.childClassName;
@@ -135,10 +151,13 @@
                 // if we're on the current selected option, we don't wrap
                 // the item in an <a> tag, so it won't look active
                 if( is_selected ) {
-                    option_html = '<span>' + display + '</span>';
+                    option_html = '<span>' + option['label'] + '</span>';
                     option_class += ' selected';
+                } else if( option['disabled'] ) {
+                    option_html = '<span>' + option['label'] + '</span>';
+                    option_class += ' disabled';
                 } else {
-                    option_html = '<a href="#' + value + '">' + display + '</a>';
+                    option_html = '<a href="#' + value + '">' + option['label'] + '</a>';
                 }
 
                 new_option = $('<' + config.childTagName + '/>', {
@@ -158,8 +177,11 @@
         * @param {string} value The value of the new selectable option
         * @param {string} display The text to use as display in list. If not provided,
         *  the variable defaults to the value parameter
+        * @param {object attributes Key:Value pairing of attributes
         */
-        add_option = function(value, display) {
+        add_option = function(value, display, attributes) {
+
+            var new_option;
 
             // display is optional. If one is not provided,
             // set the display equal to the value string
@@ -168,7 +190,14 @@
             }
 
             // we want to append the new option onto the select element
-            $('<option value="' + value + '">' + display + '</option>').appendTo(select_element);
+            new_option = $('<option value="' + value + '">' + display + '</option>').appendTo(select_element);
+
+            // add any attributes
+            if( attribtues ) {
+                $.each(attributes, function(attr_name, attr_value) {
+                    $(new_option).attr(attr_name, attr_value);
+                });
+            }
 
             // and now re-draw the generated element
             render_generated_element();
@@ -212,7 +241,45 @@
         return {
             redraw: render_generated_element,
             add: add_option,
-            select: select_option_by_value
+            select: select_option_by_value,
+
+            enable: function(value) {
+                if( !value ) {
+                    // enable all values
+                    value = get_all_values();
+                } else if (typeof value === 'string') {
+                    // make single value iterable
+                    value = [value];
+                }
+
+                $.each(value, function(index, v) {
+                    if( v in selectable_options ) {
+                        // remove disabled attr
+                        $(selectable_options[v]['option_element']).attr('disabled', null);
+                    }
+                });
+
+                render_generated_element();
+            },
+
+            disable: function(value) {
+                if( !value ) {
+                    // disable all values
+                    value = get_all_values();
+                } else if (typeof value === 'string') {
+                    // make single value iterable
+                    value = [value];
+                }
+
+                $.each(value, function(index, v) {
+                    if( v in selectable_options ) {
+                        // set disabled attr
+                        $(selectable_options[v]['option_element']).attr('disabled', 'disabled');
+                    }
+                });
+
+                render_generated_element();
+            }
         };
     };
 
@@ -229,6 +296,7 @@
         this.each(function() {
             var matched_element = this,
                 sl = $(matched_element).data('select2list.SelectList'),
+                custom_options,
                 method_name;
 
             // if we found an existing SelectList object, the plugin must've already been
@@ -250,8 +318,11 @@
 
                 } // otherwise we've nothing to do
             } else {
+                // allow custom options to be set by using data- attributes
+                custom_options = $.extend(options, $(this).data());
+
                 // initialize plugin
-                sl = new SelectList(matched_element, options);
+                sl = new SelectList(matched_element, custom_options);
                 $(matched_element).data('select2list.SelectList', sl);
             }
         });
