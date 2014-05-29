@@ -14,10 +14,10 @@ Using the plugin is very simple. No configuration is necessary; simply calling t
 The plugin allows you to customize the HTML tags and classes used to generate the list using the options at initialization.
 
 <pre>
-    $('select.custom').select2list({
-      tagName: 'div',
-      childTagName: 'p'
-    });
+$('select.custom').select2list({
+  tagName: 'div',
+  childTagName: 'p'
+});
 </pre>
 
 ## Configuration Options
@@ -32,37 +32,37 @@ The plugin allows you to customize the HTML tags and classes used to generate th
     </thead>
     <tbody>
         <tr>
-            <th scope="row">tagName</th>
+            <th scope="row"><code>tagName</code></th>
             <td><code>'ul'</code></td>
             <td>The outer HTML tag to be used to generate the new element.</td>
         </tr>
 
         <tr>
-            <th scope="row">className</th>
+            <th scope="row"><code>className</code></th>
             <td><code>'select2list'</code></td>
             <td>The HTML class to be used with the new wrapper element.</td>
         </tr>
 
         <tr>
-            <th scope="row">childTagName</th>
+            <th scope="row"><code>childTagName</code></th>
             <td><code>'li'</code></td>
             <td>The inner HTML tag to be used to generate the child elements (the options).</td>
         </tr>
 
         <tr>
-            <th scope="row">childClassName</th>
+            <th scope="row"><code>childClassName</code></th>
             <td><code>'select2list-option'</code></td>
             <td>The HTML class to be used with the new children elements (the options).</td>
         </tr>
 
         <tr>
-            <th scope="row">optionValueDataKey</th>
+            <th scope="row"><code>optionValueDataKey</code></th>
             <td><code>'select2list-value'</code></td>
             <td>Each child element will have it's associated value stored by jQuery using the $.data method, this is the key that will hold the value.</td>
         </tr>
 
         <tr>
-            <th scope="row">change</th>
+            <th scope="row"><code>change</code></th>
             <td><code>$.noop</code></td>
             <td>See the <code>change</code> event below.</td>
         </tr>
