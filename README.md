@@ -89,47 +89,47 @@ The plugin allows you to customize the HTML tags and classes used to generate th
 </table>
 </div>
 
-<div id="available-methods" class="section">
-<h2>Available Methods</h2>
-<p>After initializing the plugin, you can call methods on the plugin by providing the method name as the first parameter, followed by any method parameters, to the plugin function.</p>
+*Available Methods*
 
- <table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Method name</th>
-            <th scope="col">Parameters</th>
-            <th scope="col">Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">redraw</th>
-            <td>none</td>
-            <td>Triggers a redraw of the list element, which includes re-parsing all of the &lt;option&gt; elements in the &lt;select&gt;.</td>
-        </tr>
+After initializing the plugin, you can call methods on the plugin by providing the method name as the first parameter, followed by any method parameters, to the plugin function.
 
-        <tr>
-            <th scope="row">add</th>
-            <td>
-                <ol>
-                    <li><code>value</code> - the value of the new option</li>
-                    <li><code>display</code> - the display value of the new option (optional, defaults to <code>value</code>)</li>
-                </ol>
-            </td>
-            <td>Add a new option to the list. Also creates a new &lt;option&gt; element and appends it to the underlying &lt;select&gt; element.</td>
-        </tr>
+<table class="table">
+   <thead>
+       <tr>
+           <th scope="col">Method name</th>
+           <th scope="col">Parameters</th>
+           <th scope="col">Description</th>
+       </tr>
+   </thead>
+   <tbody>
+       <tr>
+           <th scope="row">redraw</th>
+           <td>none</td>
+           <td>Triggers a redraw of the list element, which includes re-parsing all of the &lt;option&gt; elements in the &lt;select&gt;.</td>
+       </tr>
 
-        <tr>
-            <th scope="row">select</th>
-            <td>
-                <ol>
-                    <li><code>value</code> - the value of the option to select</li>
-                </ol>
-            </td>
-            <td>Changes the currently selected option by looking up the option with the provided value and selecting it.</td>
-        </tr>
-    </tbody>
- </table>
+       <tr>
+           <th scope="row">add</th>
+           <td>
+               <ol>
+                   <li><code>value</code> - the value of the new option</li>
+                   <li><code>display</code> - the display value of the new option (optional, defaults to <code>value</code>)</li>
+               </ol>
+           </td>
+           <td>Add a new option to the list. Also creates a new &lt;option&gt; element and appends it to the underlying &lt;select&gt; element.</td>
+       </tr>
+
+       <tr>
+           <th scope="row">select</th>
+           <td>
+               <ol>
+                   <li><code>value</code> - the value of the option to select</li>
+               </ol>
+           </td>
+           <td>Changes the currently selected option by looking up the option with the provided value and selecting it.</td>
+       </tr>
+   </tbody>
+</table>
 
 *Styling the list*
 
