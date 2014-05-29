@@ -64,7 +64,7 @@ The plugin allows you to customize the HTML tags and classes used to generate th
         <tr>
             <th scope="row">change</th>
             <td><code>$.noop</code></td>
-            <td>See the <a href="#callback-change">change</a> callback below.</td>
+            <td>See the <code>change</code> event below.</td>
         </tr>
     </tbody>
 </table>
@@ -81,7 +81,7 @@ The plugin allows you to customize the HTML tags and classes used to generate th
     </thead>
     <tbody>
         <tr id="#callback-change">
-            <th scope="row">Change</th>
+            <th scope="row"><code>change</code></th>
             <td>
                 <ol>
                     <li><code>select_list_object</code> - an instance of the SelectList object</li>
@@ -109,13 +109,13 @@ After initializing the plugin, you can call methods on the plugin by providing t
    </thead>
    <tbody>
        <tr>
-           <th scope="row">redraw</th>
+           <th scope="row"><code>redraw</code></th>
            <td>none</td>
            <td>Triggers a redraw of the list element, which includes re-parsing all of the &lt;option&gt; elements in the &lt;select&gt;.</td>
        </tr>
 
        <tr>
-           <th scope="row">add</th>
+           <th scope="row"><code>add</code></th>
            <td>
                <ol>
                    <li><code>value</code> - the value of the new option</li>
@@ -126,7 +126,7 @@ After initializing the plugin, you can call methods on the plugin by providing t
        </tr>
 
        <tr>
-           <th scope="row">select</th>
+           <th scope="row"><code>select</code></th>
            <td>
                <ol>
                    <li><code>value</code> - the value of the option to select</li>
