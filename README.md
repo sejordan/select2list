@@ -63,7 +63,7 @@ The plugin allows you to customize the HTML tags and classes used to generate th
     </tbody>
 </table>
 
-## Available Methods
+## Triggered Events
 
 <table class="table">
     <thead>
