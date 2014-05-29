@@ -3,7 +3,7 @@ select2list
 
 select2list is a jQuery plugin that turns an HTML &lt;select&gt; element into a flat list of clickable items. The new list drives the old &lt;select&gt; element, so it is a drop in replacement with seamless degradation.
 
-*How do I use it?*
+## How do I use it?
 
 In addition to the documentation provided here, the source code is well documented, and easily readable.
 
@@ -14,7 +14,7 @@ Using the plugin is very simple. No configuration is necessary; simply calling t
 The plugin allows you to customize the HTML tags and classes used to generate the list using the options at initialization.
 [Here is another example](https://gist.github.com/4566593.js)
 
-*Configuration Options*
+## Configuration Options
 
 <table class="table">
     <thead>
@@ -63,7 +63,7 @@ The plugin allows you to customize the HTML tags and classes used to generate th
     </tbody>
 </table>
 
-*Available Methods*
+## Available Methods
 
 <table class="table">
     <thead>
@@ -89,7 +89,7 @@ The plugin allows you to customize the HTML tags and classes used to generate th
 </table>
 </div>
 
-*Available Methods*
+## Available Methods
 
 After initializing the plugin, you can call methods on the plugin by providing the method name as the first parameter, followed by any method parameters, to the plugin function.
 
@@ -131,6 +131,6 @@ After initializing the plugin, you can call methods on the plugin by providing t
    </tbody>
 </table>
 
-*Styling the list*
+## Styling the list
 
 Styling the list is very simple. You can control the CSS classes that go on the parent and child elements. When an option is selected, the <code>selected</code> class is also added to the child (option) element.
