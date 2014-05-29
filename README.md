@@ -9,9 +9,17 @@ In addition to the documentation provided here, the source code is well document
 
 Using the plugin is very simple. No configuration is necessary; simply calling the plugin function on a select element will get you up and running.
 
-[Here is an example](https://gist.github.com/4566041.js)
+<code>$('select.list').select2list();</code>
 
 The plugin allows you to customize the HTML tags and classes used to generate the list using the options at initialization.
+
+<code>
+    $('select.custom').select2list({
+      tagName: 'div',
+      childTagName: 'p'
+    });
+</code>
+
 [Here is another example](https://gist.github.com/4566593.js)
 
 ## Configuration Options
